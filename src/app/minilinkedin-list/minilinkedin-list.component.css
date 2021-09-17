@@ -1,0 +1,31 @@
+/* card align */
+.card_align{
+    padding: 20px;
+    margin-bottom: 10px;
+   }
+
+   .btn-light{
+       /* width: 100px; */
+       border: 1px solid #000;
+   }
+   .btn-primary{
+       /* width: 150px; */
+   }
+   .btn{
+    margin: 10px;
+    padding: 5px;
+}
+.highlightTrue
+{
+    color: red;
+}
+.cmntdiv
+{
+    width: 90%;
+    border-radius: 4px;
+    margin: 15px 10px 5px 9px;
+    padding: 4px 14px 4px 12px; 
+    background-color: #80808021;
+    font-size: 12px;
+    font-family: system-ui;
+}

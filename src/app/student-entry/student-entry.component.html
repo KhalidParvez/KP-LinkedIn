@@ -1,0 +1,26 @@
+<p>student-entry works!</p>
+<form (ngSubmit)="NewStudent()" #studentForm="ngForm">
+    <div>
+        <span>Roll NUmber:</span>
+        <input type="number" #rno="ngModel" name="RollNUmber" class="form-control" [(ngModel)]="student.RollNumber" required/>
+        <!-- <span [hidden]="rollnumber.valid || rollnumber.pristine">Rollnumber is Required</span>-->
+        <span [hidden]="rno.valid || rno.pristine">Rollnumber is Required</span>
+
+    </div>
+    <div>
+        <span>Name:</span>
+        <input type="text" #name="ngModel" name="Name" [(ngModel)]="student.Name" required/>
+        <span [hidden]="name.valid || name.pristine || IsProperName(name.value)" *ngIf="IsProperName(student.Name)">Name is Required</span>
+        <span [hidden]="name.valid || name.pristine">Name is Required</span>
+    </div>
+    <div>
+        <span>IQ:</span>
+        <input type="number" name="IQ" [(ngModel)]="student.IQ" />
+    </div>
+<!-- <button type="button" [disabled]="rno.valid && name.valid" name="btnSubmit" (click)="SaveData()">Save</button> -->
+<button type="button" [disabled]="!(studentForm.form.valid)" name="btnSubmit" (click)="SaveData();studentForm.reset()">Save</button>
+<button type="button" [disabled]="!(studentForm.form.valid)" name="btnSubmit" (click)="SaveData();studentForm.reset();SaveNext()">Save && Next</button>
+</form>
+<div>
+    <app-student-listing [students]="students" (editStudent)="EditStudent($event)" (deleteStudent)="DeleteStudent($event)" ></app-student-listing>
+</div>

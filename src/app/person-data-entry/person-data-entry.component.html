@@ -1,0 +1,67 @@
+<p>person-data-entry works!</p>
+<form [formGroup]="personForm">
+<!-- <p>
+    <span>Name:</span>
+    <input type="text" class="form-control" name="name" [formControl]="Name"/>
+    <span [hidden]="Name.pristine || Name.valid"> Name is required field</span>
+</p>
+<p>
+    <span>Age:</span>
+    <input type="text"  class="form-control" name="age"  [formControl]="Age" />
+    <span [hidden]="Age.pristine || Age.valid"> Age is required field</span>
+</p> -->
+
+<p>
+    <label>Name:</label>
+    <input type="text" class="form-control name" name="name" formControlName="Name"/>
+    <span [hidden]="personForm.pristine || personForm.valid"> Name is required field</span>
+</p>
+<p>
+    <label>Age:</label>
+    <input type="text"  class="form-control" name="age" formControlName="Age" />
+    <span [hidden]="personForm.pristine || personForm.valid"> Age is required field</span>
+</p>
+
+<div formGroupName="Address">
+
+    <label for="street1">Street 1:</label>
+    <input type="text" class="street1" formControlName="Street1" name="street1" /><br><br>
+    <label for="city">City :</label>
+    <input type="text" formControlName="City" name="city" />
+</div>
+<button (click)="PushData()" [disabled]="!personForm.valid"> Push Data</button>
+<button (click)="AddWorkHistory()">Work History</button>
+<div formArrayName="WorkHistory">
+<div *ngFor="let item of WorkHistoryArray;let i=index"> 
+    <div [formGroupName]="i">
+    <label for="company">Company Name:</label>
+    <input type="text" formControlName="companyName" name="companyName" />
+    <label for="startDate">Start Date :</label>
+    <input type="text" formControlName="StartDate" name="startDate" />
+    <input type="text" formControlName="EndDate" name="endDate" />
+    <label for="descrition">Descrition :</label>.
+    <input type="text" formControlName="Descrition" name="descrition" />
+    <button (click)="SaveWorkHistory()"> Save Work History</button>
+</div>
+</div>
+</div><br>
+
+
+<!-- <button (click)="ShowData()">Click Me!</button> -->
+</form>
+
+<!-- <p>
+    My name is {{Name}}  and my Age is {{Age}}
+</p> -->
+
+<!-- <ul>
+    <li *ngFor ="let i of perLst">
+            Name :{{i.Name}} and age : {{i.Age}}
+    </li>
+</ul> -->
+
+<ul>
+    <li *ngFor ="let i of perLst">
+            <app-person-data-display [person]=i></app-person-data-display>
+    </li>
+</ul>

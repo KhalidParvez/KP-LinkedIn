@@ -1,0 +1,26 @@
+<h2 class="headerTitle">Create Mini LinkedIn</h2>
+<p class="dec">
+    Create a Small application which allows a user to post his update on updates’ wall. Other users
+    should be able to comment and like the post.</p>
+  
+ 
+<div class="container form-loyout">
+    
+    <form #linkedInForm="ngForm" (ngSubmit)="NewLinkedIn()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Text</label>
+            <textarea type="text" class="form-control" #linkedintext=ngModel id="exampleFormControlInput1" name="inputText" [(ngModel)]="objLinkedInData.inputText" placeholder="Enter Text" required>
+            </textarea>
+            <span class="errormsg" [hidden]="linkedintext.valid || linkedintext.pristine">Please Enter Post Message is Required</span>
+       
+        </div>
+        <div class="mb-3">
+            <!-- <button type="button" [disabled]="!(linkedInForm.form.valid)" class="btn btn-success" style="margin-left: 91%;" (click)="SaveData()">Post</button> -->
+            <button type="button" [disabled]="!(linkedInForm.form.valid)" class="btn btn-primary" style="margin-left: 91%;" (click)="SaveData(linkedInForm)">Add Post</button>
+        </div>
+        <div>
+            <app-minilinkedin-list [linkedInList]="linkedIdData"></app-minilinkedin-list>
+        </div>
+        
+    </form>
+</div>

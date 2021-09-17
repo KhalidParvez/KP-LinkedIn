@@ -1,0 +1,44 @@
+<table>
+<thead>
+        <th>RollNumber</th>
+        <th>Name</th>
+        <th>IQ</th>
+        <th>Action</th>
+</thead>
+<tbody>
+    <tr *ngFor="let item of students">
+    <td>
+        {{item.RollNumber}}
+    </td>
+    <td>
+        {{item.Name | properName}}
+    </td>
+    <td>
+        {{item.IQ}}
+    </td>
+    <td>
+        <button type="button" (click)="EditStudent(item)">Edit</button>
+        <button type="button" (click)="DeleteStudent(item)">Delete</button>
+    </td>
+    </tr>
+</tbody>
+</table>
+
+<p>
+
+</p>
+<div *appDelayRendering="1000">
+  <h1>This is the Template area</h1>
+</div>
+
+<!-- <ul>
+    <li *ngFor="let item of items">
+        {{item}}
+    </li>
+</ul>
+<ul>
+    <ng-template ngFor let-item [ngForOf]="items" #name>
+        <li>{{items}}</li>
+    </ng-template>
+    
+</ul> -->

@@ -1,0 +1,24 @@
+<div class="card card_align" *ngFor="let item of linkedInList;let i=index">
+    <p> {{item.inputText}}</p>
+   
+    <div class="mb-3">
+        <button type="button" class="btn btn-link" (click)="SaveLinke(i,item.id,item.highlightTrue)">Like</button><span>{{item.linkedInLikes.length}}</span>
+
+        <button type="button" class="btn btn-link" (click)="showComments(i)">Comment</button><span>{{item.linkedInComments.length}}</span>
+        <button type="button" class="btn btn-link" (click)="deleteLinked(i,item.id)">Delete</button>
+    </div>
+
+    <div class="mb-3" *ngIf="currentIndex === i">
+        <form #commentsForm="ngForm">
+            <label for="comments" class="form-label">Comments</label>
+            <input type="text" #commentsText=ngModel class="form-control" id="comments" name="commentsText" [(ngModel)]="linkedInCommentsData.comments" placeholder="Enter Comments">
+            <span [hidden]="commentsText.valid || commentsText.pristine">Please Enter Comments Required</span>
+            <button type="button" class="btn btn-link" (click)="SaveComments(i,item.id,commentsForm)">Post Comment</button>
+        </form>
+        <div *ngFor="let itemCmt of item.linkedInComments">
+            <p class="cmntdiv">{{itemCmt.comments}}</p> <a type="button" class="btn btn-link" (click)="deleteLinked(i,item.id)">Delete</a>
+        </div> 
+    </div>
+    
+   
+</div>
